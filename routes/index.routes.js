@@ -1,7 +1,15 @@
-const router = require('express').Router()
+const router = require("express").Router();
 
-router.get('/', (req, res) => {
-  res.json('All good in here')
-})
+//Everything will start with /api
 
-module.exports = router
+router.get("/", (req, res) => {
+  res.json("All good in here");
+});
+
+const bookRoutes = require("./book.routes");
+router.use("/books", bookRoutes);
+
+const authorRoutes = require("./author.routes");
+router.use("/authors", authorRoutes);
+
+module.exports = router;
